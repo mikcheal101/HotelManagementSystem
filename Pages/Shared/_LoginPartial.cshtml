@@ -1,0 +1,27 @@
+@using Microsoft.AspNetCore.Identity;
+@using HotelManagementSystem.Models;
+@inject SignInManager<Person> SignInManager;
+@inject UserManager<Person> UserManager;
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Dashboard</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Logout</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Authentication/Index">Login</a>
+        </li>
+    </ul>
+}
