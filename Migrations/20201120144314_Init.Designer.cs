@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201120143337_Init")]
+    [Migration("20201120144314_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -83,6 +83,24 @@ namespace HotelManagementSystem.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "92697a03-329e-478f-a9f2-e86a1eca97af",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "daec7c4c-c6c6-4e38-bb26-b08be156d867",
+                            Email = "admin@mail.com",
+                            EmailConfirmed = true,
+                            Firstname = "Hassan",
+                            LockoutEnabled = false,
+                            PasswordHash = "AQAAAAEAACcQAAAAEM1t7yNxbfcfypUntvA11X6j8sErLRNBoTfXnT17xwWMUjP+/rzqocNqWnCaMXNf0Q==",
+                            PhoneNumber = "07020464737",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "e72f6410-6fe8-41d5-a96c-2813a43b6efa",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@mail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

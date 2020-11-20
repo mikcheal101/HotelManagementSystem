@@ -153,6 +153,11 @@ namespace HotelManagementSystem.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "92697a03-329e-478f-a9f2-e86a1eca97af", 0, "daec7c4c-c6c6-4e38-bb26-b08be156d867", "admin@mail.com", true, "Hassan", false, null, null, null, "AQAAAAEAACcQAAAAEM1t7yNxbfcfypUntvA11X6j8sErLRNBoTfXnT17xwWMUjP+/rzqocNqWnCaMXNf0Q==", "07020464737", true, "e72f6410-6fe8-41d5-a96c-2813a43b6efa", false, "admin@mail.com" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
