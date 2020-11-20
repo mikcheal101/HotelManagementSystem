@@ -30,7 +30,7 @@ namespace HotelManagementSystem.Data
                 PhoneNumberConfirmed = true
             };
 
-            user.PasswordHash = passwordHasher.HashPassword(user, "password");
+            user.PasswordHash = passwordHasher.HashPassword(user, "P@ssw0rd");
 
             // seed user
             builder.Entity<Person>().HasData(user);
