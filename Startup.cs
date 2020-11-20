@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 using HotelManagementSystem.Data;
 using HotelManagementSystem.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagementSystem
 {
@@ -28,6 +29,8 @@ namespace HotelManagementSystem
             services.AddRazorPages();
             services.AddDefaultIdentity<Person>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("ApplicationDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
