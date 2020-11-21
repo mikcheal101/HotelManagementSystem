@@ -34,13 +34,14 @@ namespace HotelManagementSystem
                     options.Conventions.AuthorizeFolder("/Secured");
                 });
 
-            services.AddIdentity<Person, IdentityRole>(options =>
+            services.AddIdentity<Person, Usertype>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
             })
+                .AddRoles<Usertype>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
