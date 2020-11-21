@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201120145621_Init")]
+    [Migration("20201120150222_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,17 +87,19 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c15021a0-60f1-4ced-a78e-af59db168aae",
+                            Id = "391b66c8-dd80-460c-aaa5-dfd0e8df6d3e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8a08569c-ded9-4aef-ab7e-8bbe0e0fd835",
+                            ConcurrencyStamp = "76e5164f-ea65-484d-840e-bfb7f1ac1a99",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEC53yWrKSYpyGuI3OkT4ZoTU8Y3m0LDHQ6vHeHBLBGHWw7QlGychlsAchSfOnqDcWQ==",
+                            NormalizedEmail = "ADMIN@MAIL.COM",
+                            NormalizedUserName = "ADMIN@MAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDyo6kiaejllLAV1hBhBd8b2zJi6qgGY1oj4HumkWYqGVhWGMnyNpBSlcayU8dRsOA==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "d00373b1-d16c-47e0-a61a-9ac651a5fe65",
+                            SecurityStamp = "57cc1831-ef51-47a3-815b-5585e84a1369",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         });

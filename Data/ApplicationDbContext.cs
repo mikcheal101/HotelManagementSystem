@@ -22,8 +22,10 @@ namespace HotelManagementSystem.Data
             // create default user
             var user = new Person
             {
-                UserName = "admin@mail.com",
-                Email = "admin@mail.com",
+                UserName = "admin@mail.com".ToLower(),
+                Email = "admin@mail.com".ToLower(),
+                NormalizedUserName = "admin@mail.com".ToUpper(),
+                NormalizedEmail = "admin@mail.com".ToUpper(),
                 EmailConfirmed = true,
                 Firstname = "Hassan",
                 PhoneNumber = "07020464737",

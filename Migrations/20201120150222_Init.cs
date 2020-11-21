@@ -156,7 +156,7 @@ namespace HotelManagementSystem.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "c15021a0-60f1-4ced-a78e-af59db168aae", 0, "8a08569c-ded9-4aef-ab7e-8bbe0e0fd835", "admin@mail.com", true, "Hassan", false, null, null, null, "AQAAAAEAACcQAAAAEC53yWrKSYpyGuI3OkT4ZoTU8Y3m0LDHQ6vHeHBLBGHWw7QlGychlsAchSfOnqDcWQ==", "07020464737", true, "d00373b1-d16c-47e0-a61a-9ac651a5fe65", false, "admin@mail.com" });
+                values: new object[] { "391b66c8-dd80-460c-aaa5-dfd0e8df6d3e", 0, "76e5164f-ea65-484d-840e-bfb7f1ac1a99", "admin@mail.com", true, "Hassan", false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAEDyo6kiaejllLAV1hBhBd8b2zJi6qgGY1oj4HumkWYqGVhWGMnyNpBSlcayU8dRsOA==", "07020464737", true, "57cc1831-ef51-47a3-815b-5585e84a1369", false, "admin@mail.com" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
