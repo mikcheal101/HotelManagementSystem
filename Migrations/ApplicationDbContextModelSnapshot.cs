@@ -55,6 +55,9 @@ namespace HotelManagementSystem.Migrations
                     b.Property<string>("PasswordHash")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PersonTypeId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
 
@@ -71,9 +74,6 @@ namespace HotelManagementSystem.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserType")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -83,27 +83,28 @@ namespace HotelManagementSystem.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
+                    b.HasIndex("PersonTypeId");
+
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
                         new
                         {
-                            Id = "0054c16c-ad1d-442e-94a4-ff3319ba3ae1",
+                            Id = "a4955f7b-00a8-42e5-8f68-5b8c086d880b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "de5dd8ae-e40e-41f1-aaa5-567f5ad8a451",
+                            ConcurrencyStamp = "f72211ff-7a93-4c58-8a01-13d31909406f",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP8F17f6kV504WmJJqjDPf6cuiEGvJvugSZ19YRGaXRBAjDS8bQZp4F7LIwMPkK/ZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECfFXO1f0/sK/KyJk/GXVubbe5nGaEchgBAUsHbGl0GQcvEhVa3JAYByHh8RrhWJJw==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "55c98c0c-7b66-4f46-8662-8686dccb16e1",
+                            SecurityStamp = "163a3a9a-fee7-4c7a-b604-0f995f708ee7",
                             TwoFactorEnabled = false,
-                            UserName = "admin@mail.com",
-                            UserType = 0
+                            UserName = "admin@mail.com"
                         });
                 });
 
@@ -114,6 +115,10 @@ namespace HotelManagementSystem.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -131,6 +136,8 @@ namespace HotelManagementSystem.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -214,6 +221,13 @@ namespace HotelManagementSystem.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "a4955f7b-00a8-42e5-8f68-5b8c086d880b",
+                            RoleId = "bec33a22-d2ed-4877-b4cb-244aa17aea86"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -233,6 +247,45 @@ namespace HotelManagementSystem.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("HotelManagementSystem.Models.Usertype", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.HasDiscriminator().HasValue("Usertype");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "bec33a22-d2ed-4877-b4cb-244aa17aea86",
+                            ConcurrencyStamp = "bec33a22-d2ed-4877-b4cb-244aa17aea86",
+                            Name = "system administrator",
+                            NormalizedName = "SYSTEM ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = "a7bd8327-a436-40fa-8cc5-aa85e1b2d85e",
+                            ConcurrencyStamp = "a7bd8327-a436-40fa-8cc5-aa85e1b2d85e",
+                            Name = "employee",
+                            NormalizedName = "EMPLOYEE"
+                        },
+                        new
+                        {
+                            Id = "fd226eb4-f264-41eb-883b-69eb32263bc7",
+                            ConcurrencyStamp = "fd226eb4-f264-41eb-883b-69eb32263bc7",
+                            Name = "customer",
+                            NormalizedName = "CUSTOMER"
+                        });
+                });
+
+            modelBuilder.Entity("HotelManagementSystem.Models.Person", b =>
+                {
+                    b.HasOne("HotelManagementSystem.Models.Usertype", "PersonType")
+                        .WithMany()
+                        .HasForeignKey("PersonTypeId");
+
+                    b.Navigation("PersonType");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
