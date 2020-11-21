@@ -66,7 +66,7 @@ namespace HotelManagementSystem.Pages.Authentication
             this.ReturnUrl = "/Secured/Dashboard/Index";
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public void OnGet(string returnUrl = null)
         {
             ReturnUrl = returnUrl ?? Url.Content("/Secured/Dashboard/Index");
         }
@@ -123,7 +123,9 @@ namespace HotelManagementSystem.Pages.Authentication
                     new AuthenticationProperties { IsPersistent = isPersistent });
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                logger.LogError(ex.ToString());
+            }
         }
         #endregion
 
