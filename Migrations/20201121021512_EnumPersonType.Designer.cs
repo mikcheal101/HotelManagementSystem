@@ -3,14 +3,16 @@ using System;
 using HotelManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201121021512_EnumPersonType")]
+    partial class EnumPersonType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,9 +73,6 @@ namespace HotelManagementSystem.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserType")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -88,22 +87,21 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0054c16c-ad1d-442e-94a4-ff3319ba3ae1",
+                            Id = "81d75c32-b89a-48bc-9c02-deebba2ecc45",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "de5dd8ae-e40e-41f1-aaa5-567f5ad8a451",
+                            ConcurrencyStamp = "209a0e11-5a3c-47c8-85d2-c43a38246200",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP8F17f6kV504WmJJqjDPf6cuiEGvJvugSZ19YRGaXRBAjDS8bQZp4F7LIwMPkK/ZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGzcBUoZqp5F1y99vxWAuzYRpngnVgWlvqo/7jP3dGl2+1FhmrQMI0/hfARgpOdHbg==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "55c98c0c-7b66-4f46-8662-8686dccb16e1",
+                            SecurityStamp = "f6803bf2-d377-4c69-8b2a-a4609cb2ea4c",
                             TwoFactorEnabled = false,
-                            UserName = "admin@mail.com",
-                            UserType = 0
+                            UserName = "admin@mail.com"
                         });
                 });
 
