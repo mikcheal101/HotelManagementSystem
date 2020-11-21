@@ -28,6 +28,7 @@ namespace HotelManagementSystem
                 options.UseSqlite(Configuration.GetConnectionString("ApplicationDbContext")));
 
             services.AddRazorPages()
+                .AddRazorRuntimeCompilation()
                 .AddRazorPagesOptions(options =>
                 {
                     options.Conventions.AuthorizeFolder("/Secured");
