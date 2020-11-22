@@ -3,8 +3,6 @@ using System.Security.Claims;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -14,7 +12,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using HotelManagementSystem.Data;
 using HotelManagementSystem.Models;
 using Microsoft.Extensions.Logging;
