@@ -36,6 +36,7 @@ namespace HotelManagementSystem
 
             services.AddIdentity<Person, Usertype>(options =>
             {
+                options.User.RequireUniqueEmail = true;
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireLowercase = true;
