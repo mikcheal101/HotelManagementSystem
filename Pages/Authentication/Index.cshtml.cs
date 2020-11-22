@@ -67,18 +67,20 @@ namespace HotelManagementSystem.Pages.Authentication
             if (ModelState.IsValid)
             {
                 var person = await userManager.FindByEmailAsync(Input.Username);
-                var validate_user = await signInManager.PasswordSignInAsync(person, Input.Password, Input.RememberMe, lockoutOnFailure: true);
 
-                if (validate_user.Succeeded)
+                if (person != null)
                 {
-                    this.logger.LogInformation("User Authenticated successfully!");
-                    return Redirect(returnUrl);
+                    var validate_user = await signInManager.PasswordSignInAsync(person, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+
+                    if (validate_user.Succeeded)
+                    {
+                        this.logger.LogInformation("User Authenticated successfully!");
+                        return Redirect(returnUrl);
+                    }
                 }
-                else
-                {
-                    this.logger.LogInformation("User Authenticated Unsuccessfully!");
-                    ModelState.AddModelError(string.Empty, "Invalid user credentials");
-                }
+                
+                this.logger.LogInformation("User Authenticated Unsuccessfully!");
+                ModelState.AddModelError(string.Empty, "Invalid user credentials");
             }
             return Page();
         }
