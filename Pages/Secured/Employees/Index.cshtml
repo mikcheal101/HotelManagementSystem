@@ -41,8 +41,8 @@
                         </td>
                         <td class="text-right">
                             <div class="btn-group">
-                                <a class="text-white btn px-4 btn-sm btn-danger">delete</a>
-                                <a class="text-white btn px-4 btn-sm btn-info">edit</a>
+                                <a asp-area="" asp-page="/Secured/Employees/Delete" asp-route-id="@Employee.Id" class="text-white btn px-4 btn-sm btn-danger">delete</a>
+                                <a asp-area="" asp-page="/Secured/Employees/Update" asp-route-id="@Employee.Id" class="text-white btn px-4 btn-sm btn-info">edit</a>
                             </div>
                         </td>
                     </tr>
