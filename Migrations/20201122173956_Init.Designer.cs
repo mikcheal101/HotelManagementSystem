@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201122102731_RoomsMigration")]
-    partial class RoomsMigration
+    [Migration("20201122173956_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,9 +98,9 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c456b4fe-5528-454d-baa5-e207a2a4fe34",
+                            Id = "6a32a94b-2d96-4392-ac33-5604c83f98b4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6732d250-3772-4d82-b1e4-fb1d3e84e390",
+                            ConcurrencyStamp = "33d2d3c3-0c1a-4c4b-aeb7-0ba2651826ab",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
@@ -108,10 +108,10 @@ namespace HotelManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEESsOkQNOo/SuxoIIFfj9baGKpC8CCgc+py3obk5Yb502mvibO79yn0wwi/jLdsKfA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELOQBQgssOcXKqeEFW1KLrouAUJAbzfINa5uN8VTQRZcDhQ0hGEbrE9sMuUtJaJhYQ==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "25dbf63e-e535-4fd5-b179-99cbaa79a6f7",
+                            SecurityStamp = "d3178f2e-24e4-470a-bc34-7c276690d930",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         });
@@ -135,7 +135,7 @@ namespace HotelManagementSystem.Migrations
 
                     b.HasIndex("RoomCategoryId");
 
-                    b.HasIndex("RoomNumber")
+                    b.HasIndex("RoomNumber", "FloorNumber")
                         .IsUnique();
 
                     b.ToTable("Rooms");
@@ -277,8 +277,8 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "c456b4fe-5528-454d-baa5-e207a2a4fe34",
-                            RoleId = "a3914aba-a383-4a14-b549-ac3cae6f5fa9"
+                            UserId = "6a32a94b-2d96-4392-ac33-5604c83f98b4",
+                            RoleId = "1ca89ca5-6fe2-4b50-b632-bbbebdf682db"
                         });
                 });
 
@@ -310,22 +310,22 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a3914aba-a383-4a14-b549-ac3cae6f5fa9",
-                            ConcurrencyStamp = "a3914aba-a383-4a14-b549-ac3cae6f5fa9",
+                            Id = "1ca89ca5-6fe2-4b50-b632-bbbebdf682db",
+                            ConcurrencyStamp = "1ca89ca5-6fe2-4b50-b632-bbbebdf682db",
                             Name = "system administrator",
                             NormalizedName = "SYSTEM ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "4df84341-1dfa-4030-a233-3d3ec55ab887",
-                            ConcurrencyStamp = "4df84341-1dfa-4030-a233-3d3ec55ab887",
+                            Id = "418e1890-b737-4d33-aa74-9eb5bf64de24",
+                            ConcurrencyStamp = "418e1890-b737-4d33-aa74-9eb5bf64de24",
                             Name = "employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "c3ac3a60-feb8-41dd-ad5b-f9dd5b1c393f",
-                            ConcurrencyStamp = "c3ac3a60-feb8-41dd-ad5b-f9dd5b1c393f",
+                            Id = "080db2a2-6000-45f7-a270-5db2aa176b89",
+                            ConcurrencyStamp = "080db2a2-6000-45f7-a270-5db2aa176b89",
                             Name = "customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -343,7 +343,7 @@ namespace HotelManagementSystem.Migrations
             modelBuilder.Entity("HotelManagementSystem.Models.Room", b =>
                 {
                     b.HasOne("HotelManagementSystem.Models.RoomCategory", "RoomCategory")
-                        .WithMany()
+                        .WithMany("Rooms")
                         .HasForeignKey("RoomCategoryId");
 
                     b.Navigation("RoomCategory");
@@ -398,6 +398,11 @@ namespace HotelManagementSystem.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HotelManagementSystem.Models.RoomCategory", b =>
+                {
+                    b.Navigation("Rooms");
                 });
 #pragma warning restore 612, 618
         }

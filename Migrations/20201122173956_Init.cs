@@ -23,6 +23,19 @@ namespace HotelManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "RoomCategories",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    CostPerNight = table.Column<float>(type: "REAL", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomCategories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -49,6 +62,7 @@ namespace HotelManagementSystem.Migrations
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Firstname = table.Column<string>(type: "TEXT", nullable: true),
+                    Lastname = table.Column<string>(type: "TEXT", nullable: true),
                     PersonTypeId = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -72,6 +86,26 @@ namespace HotelManagementSystem.Migrations
                         name: "FK_AspNetUsers_AspNetRoles_PersonTypeId",
                         column: x => x.PersonTypeId,
                         principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    FloorNumber = table.Column<int>(type: "INTEGER", nullable: false),
+                    RoomNumber = table.Column<string>(type: "TEXT", nullable: true),
+                    RoomCategoryId = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Rooms_RoomCategories_RoomCategoryId",
+                        column: x => x.RoomCategoryId,
+                        principalTable: "RoomCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -164,27 +198,27 @@ namespace HotelManagementSystem.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
-                values: new object[] { "bec33a22-d2ed-4877-b4cb-244aa17aea86", "bec33a22-d2ed-4877-b4cb-244aa17aea86", "Usertype", "system administrator", "SYSTEM ADMINISTRATOR" });
+                values: new object[] { "1ca89ca5-6fe2-4b50-b632-bbbebdf682db", "1ca89ca5-6fe2-4b50-b632-bbbebdf682db", "Usertype", "system administrator", "SYSTEM ADMINISTRATOR" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
-                values: new object[] { "a7bd8327-a436-40fa-8cc5-aa85e1b2d85e", "a7bd8327-a436-40fa-8cc5-aa85e1b2d85e", "Usertype", "employee", "EMPLOYEE" });
+                values: new object[] { "418e1890-b737-4d33-aa74-9eb5bf64de24", "418e1890-b737-4d33-aa74-9eb5bf64de24", "Usertype", "employee", "EMPLOYEE" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Discriminator", "Name", "NormalizedName" },
-                values: new object[] { "fd226eb4-f264-41eb-883b-69eb32263bc7", "fd226eb4-f264-41eb-883b-69eb32263bc7", "Usertype", "customer", "CUSTOMER" });
+                values: new object[] { "080db2a2-6000-45f7-a270-5db2aa176b89", "080db2a2-6000-45f7-a270-5db2aa176b89", "Usertype", "customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PersonTypeId", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a4955f7b-00a8-42e5-8f68-5b8c086d880b", 0, "f72211ff-7a93-4c58-8a01-13d31909406f", "admin@mail.com", true, "Hassan", false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAECfFXO1f0/sK/KyJk/GXVubbe5nGaEchgBAUsHbGl0GQcvEhVa3JAYByHh8RrhWJJw==", null, "07020464737", true, "163a3a9a-fee7-4c7a-b604-0f995f708ee7", false, "admin@mail.com" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PersonTypeId", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "6a32a94b-2d96-4392-ac33-5604c83f98b4", 0, "33d2d3c3-0c1a-4c4b-aeb7-0ba2651826ab", "admin@mail.com", true, "Hassan", "Dalatu", false, null, "ADMIN@MAIL.COM", "ADMIN@MAIL.COM", "AQAAAAEAACcQAAAAELOQBQgssOcXKqeEFW1KLrouAUJAbzfINa5uN8VTQRZcDhQ0hGEbrE9sMuUtJaJhYQ==", null, "07020464737", true, "d3178f2e-24e4-470a-bc34-7c276690d930", false, "admin@mail.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "bec33a22-d2ed-4877-b4cb-244aa17aea86", "a4955f7b-00a8-42e5-8f68-5b8c086d880b" });
+                values: new object[] { "1ca89ca5-6fe2-4b50-b632-bbbebdf682db", "6a32a94b-2d96-4392-ac33-5604c83f98b4" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -218,6 +252,12 @@ namespace HotelManagementSystem.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Email_UserName",
+                table: "AspNetUsers",
+                columns: new[] { "Email", "UserName" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AspNetUsers_PersonTypeId",
                 table: "AspNetUsers",
                 column: "PersonTypeId");
@@ -226,6 +266,23 @@ namespace HotelManagementSystem.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RoomCategories_Name",
+                table: "RoomCategories",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_RoomCategoryId",
+                table: "Rooms",
+                column: "RoomCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_RoomNumber_FloorNumber",
+                table: "Rooms",
+                columns: new[] { "RoomNumber", "FloorNumber" },
                 unique: true);
         }
 
@@ -247,7 +304,13 @@ namespace HotelManagementSystem.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Rooms");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "RoomCategories");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
