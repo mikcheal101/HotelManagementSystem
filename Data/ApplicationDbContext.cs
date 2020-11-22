@@ -17,6 +17,7 @@ namespace HotelManagementSystem.Data
         }
 
         public DbSet<Person> People { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Usertype> Usertypes { get; set; }
 
