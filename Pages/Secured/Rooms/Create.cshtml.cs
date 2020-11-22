@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
 using HotelManagementSystem.Data;
@@ -54,7 +53,7 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
         public void OnGet()
         { }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
@@ -64,10 +63,10 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
                 room.RoomCategoryId = ROOM_ID;
                 room.FloorNumber = Input.FloorNumber;
                 room.RoomNumber = Input.RoomNumber;
-                room.RoomCategory = this.dbContext.RoomCategories.Find(Input.RoomCategory.ToString());
+                room.RoomCategory = await this.dbContext.RoomCategories.FindAsync(Input.RoomCategory.ToString());
 
-                var added = this.dbContext.Rooms.Add(room);
-                var created = this.dbContext.SaveChanges();
+                await this.dbContext.Rooms.AddAsync(room);
+                var created = await this.dbContext.SaveChangesAsync();
 
                 if (created == 1)
                 {
