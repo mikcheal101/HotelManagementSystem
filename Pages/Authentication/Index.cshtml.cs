@@ -88,44 +88,5 @@ namespace HotelManagementSystem.Pages.Authentication
             }
             return Page();
         }
-
-        #region Helpers
-
-        #region UserSerializer
-        protected class CustomSerializeModel
-        {
-            public string UserId { get; set; }
-            public string FirstName { get; set; }
-            public string Username { get; set; }
-        }
-        #endregion
-
-        #region Sign In Method
-        private async Task SignInUser(string username, bool isPersistent)
-        {
-            var claims = new List<Claim>();
-
-            try
-            {
-                // settings
-                claims.Add(new Claim(ClaimTypes.Name, username));
-                var claimIdentities = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimPrincipal = new ClaimsPrincipal(claimIdentities);
-                var authenticationManager = Request.HttpContext;
-
-                // sign in
-                await authenticationManager.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    claimPrincipal,
-                    new AuthenticationProperties { IsPersistent = isPersistent });
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex.ToString());
-            }
-        }
-        #endregion
-
-        #endregion
     }
 }
