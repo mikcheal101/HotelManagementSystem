@@ -20,8 +20,19 @@ namespace HotelManagementSystem.Data
 
         public DbSet<Usertype> Usertypes { get; set; }
 
+        public DbSet<RoomCategory> RoomCategories { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<RoomCategory>()
+                .HasIndex(i => i.Name)
+                .IsUnique();
+
+            builder.Entity<Room>()
+                .HasIndex(i => i.RoomNumber)
+                .IsUnique();
+
             // base.OnModelCreating(builder);
             PasswordHasher<Person> passwordHasher = new PasswordHasher<Person>();
 
