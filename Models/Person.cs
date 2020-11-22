@@ -7,6 +7,8 @@ namespace HotelManagementSystem.Models
     {
         [PersonalData]
         public string Firstname { get; set; }
+        [PersonalData]
+        public string Lastname { get; set; }
 
         [PersonalData]
         public Usertype PersonType { get; set; }
