@@ -13,6 +13,7 @@ namespace HotelManagementSystem.Pages.Secured.Employees
 {
     public class CreateModel : PageModel
     {
+        private readonly string RedirectUrl = "/Secured/Employees/Index";
         private readonly ILogger<CreateModel> logger;
         private readonly ApplicationDbContext dbContext;
         private readonly UserManager<Person> userManager;
@@ -67,16 +68,22 @@ namespace HotelManagementSystem.Pages.Secured.Employees
                 };
 
                 var passwordHasher = new PasswordHasher<Person>();
-                employee.PasswordHash = passwordHasher.HashPassword(employee, "P@ssw0rd");
+                employee.PasswordHash = passwordHasher.HashPassword(employee, Input.Password);
                 var creatingUser = await userManager.CreateAsync(employee, Input.Password);
+
+                // assign type
+                var result = await this.userManager.AddToRoleAsync(employee, "employee");
+
                 if (creatingUser.Succeeded)
                 {
                     this.logger.LogInformation("Employee Created Successfully!");
-                    RedirectToPage("/Index");
+                    return Redirect(RedirectUrl);
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "An error occued while creting the employee!");
+                    var errorMessage = creatingUser.Errors.First().Description;
+                    this.logger.LogError(errorMessage);
+                    ModelState.AddModelError(string.Empty, errorMessage);
                 }
             }
             return Page();

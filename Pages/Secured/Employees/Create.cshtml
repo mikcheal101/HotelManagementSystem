@@ -13,5 +13,60 @@
                 <hr class="dropdown-divider" />
             </div>
         </div>
+
+        <div class="row col">
+            <div asp-validation-summary="All" class="text-danger text-sm"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Firstname"></label>
+                    <input class="form-control" asp-for="Input.Firstname" />
+                    <small class="text-danger" asp-validation-for="Input.Firstname"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Lastname"></label>
+                    <input class="form-control" asp-for="Input.Lastname" />
+                    <small class="text-danger" asp-validation-for="Input.Lastname"></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Username"></label>
+                    <input class="form-control" asp-for="Input.Username" />
+                    <small class="text-danger" asp-validation-for="Input.Username"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input class="form-control" asp-for="Input.Email" />
+                    <small class="text-danger" asp-validation-for="Input.Email"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input class="form-control" asp-for="Input.Password" />
+                    <small class="text-danger" asp-validation-for="Input.Password"></small>
+                </div>
+            </div>
+        </div>
+        <div class="row text-right">
+            <div class="col">
+                <button type="submit" class="px-3 btn btn-sm btn-success mt-4">Create Employee</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
     </div>
 </form>

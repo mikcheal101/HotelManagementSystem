@@ -1,6 +1,7 @@
 ﻿@page
 @model MyApp.Namespace.EmployeesModel
 @{
+    ViewData["Title"] = "Employees";
 }
 
 <div class="container">
@@ -9,7 +10,7 @@
             <span class="h6">Employees</span>
         </div>
         <div class="col text-right">
-            <button class="btn btn-sm px-3 btn-primary">add employee</button>
+            <a asp-area="" asp-page="/Secured/Employees/Create" class="btn btn-sm px-3 btn-primary">add employee</a>
         </div>
     </div>
     <hr class="dropdown-divider" />
@@ -18,24 +19,34 @@
             <table class="table table-hover table-sm">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Username</th>
-                        <th>Firstname</th>
+                        <th>Email</th>
+                        <th>Fullname</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var Employee in Model.Employees)
+                    {
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <span>@Employee.UserName</span>
+                        </td>
+                        <td>
+                            <span>@Employee.Email</span>
+                        </td>
+                        <td>
+                            <span>@Employee.Firstname</span>
+                            <span>@Employee.Lastname</span>
+                        </td>
                         <td class="text-right">
                             <div class="btn-group">
                                 <a class="text-white btn px-4 btn-sm btn-danger">delete</a>
-                                <a class="text-white btn px-4 btn-sm btn-warning">edit</a>
+                                <a class="text-white btn px-4 btn-sm btn-info">edit</a>
                             </div>
                         </td>
                     </tr>
+                    }
                 </tbody>
             </table>
         </div>
