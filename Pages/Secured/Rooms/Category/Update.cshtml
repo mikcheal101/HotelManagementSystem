@@ -1,4 +1,51 @@
 ﻿@page
 @model HotelManagementSystem.Pages.Secured.Rooms.Category.UpdateModel
 @{
+    ViewData["Title"] = "Update A Room Category";
 }
+
+<form method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h6>Room Category Editing Form</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="text-danger" asp-validation-summary="All"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Name"></label>
+                    <input class="form-control" asp-for="Input.Name" />
+                    <small class="text-danger" asp-validation-for="Iput.Name"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.CostPerNight"></label>
+                    <input class="form-control" asp-for="Input.CostPerNight" type="number" />
+                    <small class="text-danger" asp-validation-for="Input.CostPerNight"></small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-sm btn-success" type="submit">Update Room Category</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
+    </div>
+</form>
