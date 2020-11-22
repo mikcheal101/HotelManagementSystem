@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HotelManagementSystem.Pages.Secured.Employees
 {
-    public class UpdateEmployeeModel : PageModel
+    public class UpdateModel : PageModel
     {
         public void OnGet()
         {
