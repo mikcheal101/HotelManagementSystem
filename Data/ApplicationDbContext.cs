@@ -67,6 +67,7 @@ namespace HotelManagementSystem.Data
                 NormalizedEmail = "admin@mail.com".ToUpper(),
                 EmailConfirmed = true,
                 Firstname = "Hassan",
+                Lastname = "Dalatu",
                 PhoneNumber = "07020464737",
                 PhoneNumberConfirmed = true,
             };
