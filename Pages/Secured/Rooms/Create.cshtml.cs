@@ -9,6 +9,8 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
 {
     public class CreateModel : PageModel
     {
+
+        
         public void OnGet()
         {
         }
