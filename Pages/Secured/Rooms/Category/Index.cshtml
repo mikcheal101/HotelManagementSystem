@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <table class="table table-striped table-sm">
+            <table class="table table-hover table-sm">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -36,10 +36,10 @@
                     <tr>
                         <td>@category.Name</td>
                         <td>@category.CostPerNight</td>
-                        <td>
+                        <td class="text-right">
                             <div class="btn-group">
                                 <a class="btn btn-sm px-3 btn-danger" asp-area="" asp-page="/Secured/Rooms/Category/Delete" asp-route-id="@category.Id">delete</a>
-                                <a class="btn btn-sm px-3 btn-ifo" asp-area="" asp-page="/Secured/Rooms/Category/Update" asp-route-id="@category.Id">edit</a>
+                                <a class="btn btn-sm px-3 btn-info" asp-area="" asp-page="/Secured/Rooms/Category/Update" asp-route-id="@category.Id">edit</a>
                             </div>
                         </td>
                     </tr>
