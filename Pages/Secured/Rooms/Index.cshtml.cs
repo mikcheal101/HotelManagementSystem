@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using HotelManagementSystem.Data;
 using HotelManagementSystem.Models;
@@ -18,11 +19,15 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
         {
             this.logger = logger;
             this.dbContext = dbContext;
+            this.Rooms = this.dbContext.Rooms.ToList<Room>();
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            this.Rooms = this.dbContext.Rooms.ToList<Room>();
+            foreach (var room in this.Rooms)
+            {
+                room.RoomCategory = await this.dbContext.RoomCategories.FindAsync(room.RoomCategoryId);
+            }
         }
     }
 }

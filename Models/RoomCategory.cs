@@ -1,5 +1,6 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-
+using System.Collections.Generic;
 namespace HotelManagementSystem.Models
 {
     public class RoomCategory
@@ -9,5 +10,7 @@ namespace HotelManagementSystem.Models
 
         public string Name { get; set; }
         public float CostPerNight { get; set; }
+
+        public List<Room> Rooms { get; set; }
     }
 }

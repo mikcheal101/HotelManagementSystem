@@ -30,7 +30,12 @@ namespace HotelManagementSystem.Data
                 .IsUnique();
 
             builder.Entity<Room>()
-                .HasIndex(i => i.RoomNumber)
+                .HasOne<RoomCategory>(room => room.RoomCategory)
+                .WithMany(category => category.Rooms)
+                .HasForeignKey(room => room.RoomCategoryId);
+
+            builder.Entity<Room>()
+                .HasIndex(room => new { room.RoomNumber, room.FloorNumber })
                 .IsUnique();
 
             // base.OnModelCreating(builder);

@@ -1,4 +1,58 @@
 ﻿@page
 @model HotelManagementSystem.Pages.Secured.Rooms.CreateModel
 @{
+    ViewData["Title"] =  "Create A Room";
 }
+
+<form method="post">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h6>Room Creation Form</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Input.RoomCategory"></label>
+                    <select class="form-control" asp-for="Input.RoomCategory" asp-items="@Model.RoomCategories"></select>
+                    <div class="text-danger" asp-validation-for="Input.RoomCategory"></div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label class="form-control-label" asp-for="Input.FloorNumber"></label>
+                    <input class="form-control" asp-for="Input.FloorNumber" type="number" />
+                    <div class="text-danger" asp-validation-for="Input.FloorNumber"></div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label class="form-control-label" asp-for="Input.RoomNumber"></label>
+                    <input class="form-control" asp-for="Input.RoomNumber"  />
+                    <div class="text-danger" asp-validation-for="Input.RoomNumber"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-sm btn-success px-3">Save Room</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
+    </div>
+</form>
