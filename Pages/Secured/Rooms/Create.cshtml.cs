@@ -53,14 +53,14 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
         public void OnGet()
         { }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (ModelState.IsValid)
             {
                 string ROOM_ID = Guid.NewGuid().ToString();
                 var room = new Room();
                 room.Id = ROOM_ID;
-                room.RoomCategoryId = ROOM_ID;
+                room.RoomCategoryId = Input.RoomCategory.ToString();
                 room.FloorNumber = Input.FloorNumber;
                 room.RoomNumber = Input.RoomNumber;
                 room.RoomCategory = await this.dbContext.RoomCategories.FindAsync(Input.RoomCategory.ToString());
