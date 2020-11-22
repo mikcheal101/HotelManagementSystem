@@ -22,7 +22,7 @@ namespace HotelManagementSystem.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
+            // base.OnModelCreating(builder);
             PasswordHasher<Person> passwordHasher = new PasswordHasher<Person>();
 
             // create the usertypes
@@ -75,6 +75,9 @@ namespace HotelManagementSystem.Data
 
             // seed user
             builder.Entity<Person>().HasData(user);
+            builder.Entity<Person>()
+                .HasIndex(person => new { person.Email, person.UserName })
+                .IsUnique();
 
             // add user to role
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
@@ -83,6 +86,8 @@ namespace HotelManagementSystem.Data
                 RoleId = ADMIN_ID,
                 UserId = USER_ID
             });
+
+            base.OnModelCreating(builder);
         }
     }
 }
