@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201122173956_Init")]
+    [Migration("20201124220012_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,10 @@ namespace HotelManagementSystem.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -95,12 +99,14 @@ namespace HotelManagementSystem.Migrations
 
                     b.ToTable("AspNetUsers");
 
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Person");
+
                     b.HasData(
                         new
                         {
-                            Id = "6a32a94b-2d96-4392-ac33-5604c83f98b4",
+                            Id = "edc1bd1d-1262-458e-92a8-da8cfe81217b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "33d2d3c3-0c1a-4c4b-aeb7-0ba2651826ab",
+                            ConcurrencyStamp = "41fee47b-3c4f-404a-bebe-dc0cdd0aa98d",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
@@ -108,10 +114,10 @@ namespace HotelManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELOQBQgssOcXKqeEFW1KLrouAUJAbzfINa5uN8VTQRZcDhQ0hGEbrE9sMuUtJaJhYQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGUz5JI813ONoBic6aC7MoQlA5vy+hNXPZRbiTTpxn+31Qho0w2m1zOlj+Gb78NjNw==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "d3178f2e-24e4-470a-bc34-7c276690d930",
+                            SecurityStamp = "8eada88c-bf1e-41fd-824a-bc622e20f431",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         });
@@ -126,6 +132,7 @@ namespace HotelManagementSystem.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RoomCategoryId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("RoomNumber")
@@ -277,8 +284,8 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "6a32a94b-2d96-4392-ac33-5604c83f98b4",
-                            RoleId = "1ca89ca5-6fe2-4b50-b632-bbbebdf682db"
+                            UserId = "edc1bd1d-1262-458e-92a8-da8cfe81217b",
+                            RoleId = "bdb7f86e-94cd-42c4-8a75-647324db5fac"
                         });
                 });
 
@@ -301,6 +308,21 @@ namespace HotelManagementSystem.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("HotelManagementSystem.Models.Customer", b =>
+                {
+                    b.HasBaseType("HotelManagementSystem.Models.Person");
+
+                    b.Property<string>("PassportNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PassportPhoto")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasDiscriminator().HasValue("Customer");
+                });
+
             modelBuilder.Entity("HotelManagementSystem.Models.Usertype", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
@@ -310,22 +332,22 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1ca89ca5-6fe2-4b50-b632-bbbebdf682db",
-                            ConcurrencyStamp = "1ca89ca5-6fe2-4b50-b632-bbbebdf682db",
+                            Id = "bdb7f86e-94cd-42c4-8a75-647324db5fac",
+                            ConcurrencyStamp = "bdb7f86e-94cd-42c4-8a75-647324db5fac",
                             Name = "system administrator",
                             NormalizedName = "SYSTEM ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "418e1890-b737-4d33-aa74-9eb5bf64de24",
-                            ConcurrencyStamp = "418e1890-b737-4d33-aa74-9eb5bf64de24",
+                            Id = "51fec5fa-522c-4ea0-b1de-9ba67511e30d",
+                            ConcurrencyStamp = "51fec5fa-522c-4ea0-b1de-9ba67511e30d",
                             Name = "employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "080db2a2-6000-45f7-a270-5db2aa176b89",
-                            ConcurrencyStamp = "080db2a2-6000-45f7-a270-5db2aa176b89",
+                            Id = "11d95d65-ac86-4804-85cc-42bb203b47de",
+                            ConcurrencyStamp = "11d95d65-ac86-4804-85cc-42bb203b47de",
                             Name = "customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -344,7 +366,9 @@ namespace HotelManagementSystem.Migrations
                 {
                     b.HasOne("HotelManagementSystem.Models.RoomCategory", "RoomCategory")
                         .WithMany("Rooms")
-                        .HasForeignKey("RoomCategoryId");
+                        .HasForeignKey("RoomCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("RoomCategory");
                 });

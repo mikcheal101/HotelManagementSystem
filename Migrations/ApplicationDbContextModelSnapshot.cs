@@ -102,9 +102,9 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "980b7fe5-fe97-4bac-bc95-ea1da8ed0a08",
+                            Id = "edc1bd1d-1262-458e-92a8-da8cfe81217b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4d8eb12f-bfec-4ee2-929c-c30e36bf45a1",
+                            ConcurrencyStamp = "41fee47b-3c4f-404a-bebe-dc0cdd0aa98d",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
@@ -112,10 +112,10 @@ namespace HotelManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN+IqvBRx1HQ6hNS+hMgGrEdj5svdazhtG+nAgLsJIwDfQjSPT8wBIuTbMJ3MLrx1w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGUz5JI813ONoBic6aC7MoQlA5vy+hNXPZRbiTTpxn+31Qho0w2m1zOlj+Gb78NjNw==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "688dae8c-d066-44eb-b483-d9f90fac095f",
+                            SecurityStamp = "8eada88c-bf1e-41fd-824a-bc622e20f431",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         });
@@ -282,8 +282,8 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "980b7fe5-fe97-4bac-bc95-ea1da8ed0a08",
-                            RoleId = "bd930e65-6da4-40ff-9513-6777045fb445"
+                            UserId = "edc1bd1d-1262-458e-92a8-da8cfe81217b",
+                            RoleId = "bdb7f86e-94cd-42c4-8a75-647324db5fac"
                         });
                 });
 
@@ -330,22 +330,22 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bd930e65-6da4-40ff-9513-6777045fb445",
-                            ConcurrencyStamp = "bd930e65-6da4-40ff-9513-6777045fb445",
+                            Id = "bdb7f86e-94cd-42c4-8a75-647324db5fac",
+                            ConcurrencyStamp = "bdb7f86e-94cd-42c4-8a75-647324db5fac",
                             Name = "system administrator",
                             NormalizedName = "SYSTEM ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "3aa40dc6-9a5d-4c63-a1d9-7ee1801907dd",
-                            ConcurrencyStamp = "3aa40dc6-9a5d-4c63-a1d9-7ee1801907dd",
+                            Id = "51fec5fa-522c-4ea0-b1de-9ba67511e30d",
+                            ConcurrencyStamp = "51fec5fa-522c-4ea0-b1de-9ba67511e30d",
                             Name = "employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "f7073b03-962c-4399-a3d6-810116cb8760",
-                            ConcurrencyStamp = "f7073b03-962c-4399-a3d6-810116cb8760",
+                            Id = "11d95d65-ac86-4804-85cc-42bb203b47de",
+                            ConcurrencyStamp = "11d95d65-ac86-4804-85cc-42bb203b47de",
                             Name = "customer",
                             NormalizedName = "CUSTOMER"
                         });

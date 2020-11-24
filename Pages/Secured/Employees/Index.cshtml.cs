@@ -24,7 +24,7 @@ namespace MyApp.Namespace
 
         public void OnGet()
         {
-            this.Employees = this.dbContext.People.ToList<Person>();
+            this.Employees = this.dbContext.People.ToList();
         }
     }
 }
