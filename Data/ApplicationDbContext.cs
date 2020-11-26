@@ -51,8 +51,8 @@ namespace HotelManagementSystem.Data
             {
                 Id = ADMIN_ID,
                 ConcurrencyStamp = ADMIN_ID,
-                Name = "system administrator".ToLower(),
-                NormalizedName = "system administrator".ToUpper(),
+                Name = UserRole.SYSTEM_ADMINISTRATOR.ToString().ToLower(),
+                NormalizedName = UserRole.SYSTEM_ADMINISTRATOR.ToString().ToUpper(),
             };
 
             var EMPLOYEE_ID = Guid.NewGuid().ToString();
@@ -60,8 +60,8 @@ namespace HotelManagementSystem.Data
             {
                 Id = EMPLOYEE_ID,
                 ConcurrencyStamp = EMPLOYEE_ID,
-                Name = "employee".ToLower(),
-                NormalizedName = "employee".ToUpper(),
+                Name = UserRole.EMPLOYEE.ToString().ToLower(),
+                NormalizedName = UserRole.EMPLOYEE.ToString().ToUpper(),
             };
 
             var CUSTOMER_ID = Guid.NewGuid().ToString();
@@ -69,8 +69,8 @@ namespace HotelManagementSystem.Data
             {
                 Id = CUSTOMER_ID,
                 ConcurrencyStamp = CUSTOMER_ID,
-                Name = "customer".ToLower(),
-                NormalizedName = "customer".ToUpper(),
+                Name = UserRole.CUSTOMER.ToString().ToLower(),
+                NormalizedName = UserRole.CUSTOMER.ToString().ToUpper(),
             };
 
             // seed usertpes
