@@ -1,4 +1,83 @@
 ﻿@page
 @model HotelManagementSystem.Pages.Secured.Customers.CreateModel
 @{
+    ViewData["Title"] = "Create A Customer";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h6>Customer Creation Form</h6>
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
+
+        <div class="row col">
+            <div asp-validation-summary="All" class="text-danger text-sm"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Firstname"></label>
+                    <input class="form-control" asp-for="Input.Firstname" />
+                    <small class="text-danger" asp-validation-for="Input.Firstname"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Lastname"></label>
+                    <input class="form-control" asp-for="Input.Lastname" />
+                    <small class="text-danger" asp-validation-for="Input.Lastname"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input class="form-control" asp-for="Input.Email" />
+                    <small class="text-danger" asp-validation-for="Input.Email"></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.IdentificationNumber"></label>
+                    <input class="form-control" asp-for="Input.IdentificationNumber" />
+                    <small class="text-danger" asp-validation-for="Input.IdentificationNumber"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.MeansOfIdentificationType"></label>
+                    <select class="form-control" asp-items="@Model.IdTypes" asp-for="Input.MeansOfIdentificationType"></select>
+                    <small class="text-danger" asp-validation-for="Input.MeansOfIdentificationType"></small>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.MeansOfIdentification"></label>
+                    <input type="file" class="form-control" asp-for="Input.MeansOfIdentification" />
+                    <small class="text-danger" asp-validation-for="Input.MeansOfIdentification"></small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="px-3 btn btn-sm btn-success mt-4 text-capitalize">Create Customer</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

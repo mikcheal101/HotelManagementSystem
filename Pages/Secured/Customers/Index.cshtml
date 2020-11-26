@@ -1,4 +1,54 @@
 ﻿@page
 @model HotelManagementSystem.Pages.Secured.Customers.IndexModel
 @{
+    ViewData["Title"] = "Customers";
 }
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <span class="h6">Customers</span>
+        </div>
+        <div class="col text-right">
+            <a asp-area="" asp-page="/Secured/Customers/Create" class="text-capitalize btn btn-sm px-3 btn-primary">add Customer</a>
+        </div>
+    </div>
+    <hr class="dropdown-divider" />
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Fullname</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Customer in Model.Customers)
+                    {
+                    <tr>
+                        <td>
+                            <span>@Customer.UserName</span>
+                        </td>
+                        <td>
+                            <span>@Customer.Email</span>
+                        </td>
+                        <td>
+                            <span>@Customer.FullName</span>
+                        </td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <a asp-area="" asp-page="/Secured/Customers/Delete" asp-route-id="@Customer.Id" class="text-white btn px-4 btn-sm btn-danger text-capitalize">delete</a>
+                                <a asp-area="" asp-page="/Secured/Customers/Update" asp-route-id="@Customer.Id" class="text-white btn px-4 btn-sm btn-info text-capitalize">edit</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
