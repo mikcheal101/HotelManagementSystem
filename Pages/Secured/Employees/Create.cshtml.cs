@@ -55,6 +55,9 @@ namespace HotelManagementSystem.Pages.Secured.Employees
             {
 
                 var EMPLOYEE_ID = Guid.NewGuid().ToString();
+                var emp_type = this.dbContext.Usertypes.Where(param => param.Name == UserRole.EMPLOYEE.ToString().ToLower())
+                    .FirstOrDefault<Usertype>();
+ 
                 var employee = new Person
                 {
                     Id = EMPLOYEE_ID,
@@ -64,7 +67,8 @@ namespace HotelManagementSystem.Pages.Secured.Employees
                     NormalizedEmail = Input.Email.ToUpper(),
                     EmailConfirmed = true,
                     Firstname = Input.Firstname,
-                    Lastname = Input.Lastname
+                    Lastname = Input.Lastname,
+                    PersonType = emp_type
                 };
 
                 var passwordHasher = new PasswordHasher<Person>();
@@ -72,7 +76,7 @@ namespace HotelManagementSystem.Pages.Secured.Employees
                 var creatingUser = await userManager.CreateAsync(employee, Input.Password);
 
                 // assign type
-                var result = await this.userManager.AddToRoleAsync(employee, "employee");
+                var result = await this.userManager.AddToRoleAsync(employee, UserRole.EMPLOYEE.ToString());
 
                 if (creatingUser.Succeeded)
                 {

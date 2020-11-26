@@ -11,10 +11,10 @@ namespace MyApp.Namespace
 {
     public class EmployeesModel : PageModel
     {
-        private readonly ILogger<EmployeeModel> logger;
+        private readonly ILogger<EmployeesModel> logger;
         private readonly ApplicationDbContext dbContext;
 
-        public EmployeesModel(ILogger<EmployeeModel> logger, ApplicationDbContext dbContext)
+        public EmployeesModel(ILogger<EmployeesModel> logger, ApplicationDbContext dbContext)
         {
             this.logger = logger;
             this.dbContext = dbContext;
@@ -24,7 +24,9 @@ namespace MyApp.Namespace
 
         public void OnGet()
         {
-            this.Employees = this.dbContext.People.ToList();
+            this.Employees = this.dbContext.People
+                .Where<Person>(person => person.PersonType.Name == UserRole.EMPLOYEE.ToString().ToLower())
+                .ToList<Person>();
         }
     }
 }
