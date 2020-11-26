@@ -34,12 +34,12 @@ namespace HotelManagementSystem.Pages.Secured.Customers
         {
             new SelectListItem
             {
-                Text=IdentificationType.DRIVERS_LICENCE.ToString(),
+                Text=IdentificationType.DRIVERS_LICENCE.ToString().Replace("_", " "),
                 Value=IdentificationType.DRIVERS_LICENCE.ToString()
             },
             new SelectListItem
             {
-                Text=IdentificationType.INTERNATIONAL_PASSPORT.ToString(),
+                Text=IdentificationType.INTERNATIONAL_PASSPORT.ToString().Replace("_", " "),
                 Value=IdentificationType.INTERNATIONAL_PASSPORT.ToString()
             }
         }, "Value", "Text");
