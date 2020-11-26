@@ -3,55 +3,20 @@ using System;
 using HotelManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201126200240_Bookings")]
+    partial class Bookings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.0");
-
-            modelBuilder.Entity("HotelManagementSystem.Models.Booking", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AttendantId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CheckInTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CheckOutTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("CustomerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("ExpectedCheckOutTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("PaidPenalty")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("RoomId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AttendantId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("RoomId");
-
-                    b.ToTable("Bookings");
-                });
 
             modelBuilder.Entity("HotelManagementSystem.Models.Person", b =>
                 {
@@ -139,9 +104,9 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "26c61922-c53f-4b66-9ddb-55752bdc7a3b",
+                            Id = "aa5a3778-46a7-49e2-b033-beed3c09e494",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "368cf53f-0e40-4a20-b40e-70e214739814",
+                            ConcurrencyStamp = "6e3e7c4b-6b49-4ea3-ba87-bb2138d63108",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
@@ -149,10 +114,10 @@ namespace HotelManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBVcsr5rCYllU0NkIKpBsYUZk1IUrDULb5gy3cXMHs3aiZxjUzdamnNY5M4jLKPjIQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMjcjWr77tE+vbb3becCFxWbJLh5xQo3pTzLJKPNg2eBBzoZTgLGlneAGw075Jx2RQ==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "fdcb70e1-0fc5-4892-83fd-66156ff124c4",
+                            SecurityStamp = "e9ef95a4-2718-422b-b3f6-e312fb0b2257",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         });
@@ -319,8 +284,8 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "26c61922-c53f-4b66-9ddb-55752bdc7a3b",
-                            RoleId = "f0ac7fd8-3843-4cee-90e7-0240d4620924"
+                            UserId = "aa5a3778-46a7-49e2-b033-beed3c09e494",
+                            RoleId = "9e618b0b-8cd4-4d24-b814-1d0cf50c55be"
                         });
                 });
 
@@ -370,46 +335,25 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f0ac7fd8-3843-4cee-90e7-0240d4620924",
-                            ConcurrencyStamp = "f0ac7fd8-3843-4cee-90e7-0240d4620924",
+                            Id = "9e618b0b-8cd4-4d24-b814-1d0cf50c55be",
+                            ConcurrencyStamp = "9e618b0b-8cd4-4d24-b814-1d0cf50c55be",
                             Name = "system_administrator",
                             NormalizedName = "SYSTEM_ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "5769fc2a-b18a-45b8-ae17-7cf2ba01a80b",
-                            ConcurrencyStamp = "5769fc2a-b18a-45b8-ae17-7cf2ba01a80b",
+                            Id = "8d463df8-2772-4ff6-b3d6-9db889c77975",
+                            ConcurrencyStamp = "8d463df8-2772-4ff6-b3d6-9db889c77975",
                             Name = "employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "bf50efe5-3940-48ed-b187-23cea92dcf32",
-                            ConcurrencyStamp = "bf50efe5-3940-48ed-b187-23cea92dcf32",
+                            Id = "5bbca874-0d71-45fb-bcc1-81dc7cc465e0",
+                            ConcurrencyStamp = "5bbca874-0d71-45fb-bcc1-81dc7cc465e0",
                             Name = "customer",
                             NormalizedName = "CUSTOMER"
                         });
-                });
-
-            modelBuilder.Entity("HotelManagementSystem.Models.Booking", b =>
-                {
-                    b.HasOne("HotelManagementSystem.Models.Person", "Attendant")
-                        .WithMany()
-                        .HasForeignKey("AttendantId");
-
-                    b.HasOne("HotelManagementSystem.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId");
-
-                    b.HasOne("HotelManagementSystem.Models.Room", "Room")
-                        .WithMany()
-                        .HasForeignKey("RoomId");
-
-                    b.Navigation("Attendant");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("HotelManagementSystem.Models.Person", b =>

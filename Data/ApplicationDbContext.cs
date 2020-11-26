@@ -23,6 +23,7 @@ namespace HotelManagementSystem.Data
 
         public DbSet<RoomCategory> RoomCategories { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -41,6 +42,14 @@ namespace HotelManagementSystem.Data
             builder.Entity<Room>()
                 .HasIndex(room => new { room.RoomNumber, room.FloorNumber })
                 .IsUnique();
+
+
+            builder.Entity<Booking>()
+                .HasOne<Customer>(booking => booking.Customer);
+            builder.Entity<Booking>()
+                .HasOne<Person>(booking => booking.Attendant);
+            builder.Entity<Booking>()
+                .HasOne<Room>(booking => booking.Room);
 
             // base.OnModelCreating(builder);
             PasswordHasher<Person> passwordHasher = new PasswordHasher<Person>();
