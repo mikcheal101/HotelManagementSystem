@@ -1,5 +1,6 @@
 using System;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace HotelManagementSystem.Models
 {
@@ -12,6 +13,12 @@ namespace HotelManagementSystem.Models
 
         [PersonalData]
         public Usertype PersonType { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName
+        {
+            get { return Firstname + ", " + Lastname; }
+        }
 
     }
 }
