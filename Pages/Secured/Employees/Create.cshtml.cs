@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using HotelManagementSystem.Data;
 using HotelManagementSystem.Models;
 using Microsoft.Extensions.Logging;
+
+
 namespace HotelManagementSystem.Pages.Secured.Employees
 {
     public class CreateModel : PageModel
