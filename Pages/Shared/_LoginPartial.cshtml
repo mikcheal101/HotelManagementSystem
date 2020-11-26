@@ -13,7 +13,7 @@
         </li>
 
 
-        @if(User.IsInRole("system administrator"))
+        @if(User.IsInRole(UserRole.SYSTEM_ADMINISTRATOR.ToString().ToLower()))
         {
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,11 +31,11 @@
                 <a class="nav-link text-dark" asp-area="" asp-page="/Secured/Employees/Index">Employees</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-page="/Secured/Index">Customers</a>
+                <a class="nav-link text-dark" asp-area="" asp-page="/Secured/CUstomers/Index">Customers</a>
             </li>
         }
 
-        @if(!User.IsInRole("customer"))
+        @if(!User.IsInRole(UserRole.EMPLOYEE.ToString().ToLower()))
         {
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-page="/Secured/Index">Bookings</a>
