@@ -56,8 +56,8 @@ namespace HotelManagementSystem.Pages.Secured.Employees
 
                 var EMPLOYEE_ID = Guid.NewGuid().ToString();
                 var emp_type = this.dbContext.Usertypes.Where(param => param.Name == UserRole.EMPLOYEE.ToString().ToLower())
-                    .FirstOrDefault<Usertype>();
- 
+                    .First<Usertype>();
+
                 var employee = new Person
                 {
                     Id = EMPLOYEE_ID,
