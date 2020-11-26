@@ -3,15 +3,24 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HotelManagementSystem.Models
 {
+    public enum IdentificationType
+    {
+        DRIVERS_LICENCE,
+        INTERNATIONAL_PASSPORT
+    }
     public class Customer : Person
     {
-        [Required(ErrorMessage="Passport number is required!")]
+        [Required(ErrorMessage="A Type of Means Of Identification is required!")]
         [PersonalData]
-        public string PassportNumber { get; set; }
+        public IdentificationType MeansOfIdentificationType { get; set; }
+
+        [Required(ErrorMessage="Means of identification number is required!")]
+        [PersonalData]
+        public string IdentificationNumber { get; set; }
 
 
-        [Required(ErrorMessage="Passport Photo is required!")]
+        [Required(ErrorMessage="Kindly Upload A Means Of Identification!")]
         [PersonalData]
-        public string PassportPhoto { get; set; }
+        public string MeansOfIdentification { get; set; }
     }
 }
