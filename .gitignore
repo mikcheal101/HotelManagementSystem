@@ -3,3 +3,5 @@ bin
 bin/Debug
 bin/Debug/net5.0
 .fuse_hidden*
+!Uploads
+Uploads/*
