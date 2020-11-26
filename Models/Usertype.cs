@@ -9,7 +9,7 @@ namespace HotelManagementSystem.Models
         EMPLOYEE,
         SYSTEM_ADMINISTRATOR,
     }
-    
+
     public class Usertype : IdentityRole
-    {}
+    { }
 }
