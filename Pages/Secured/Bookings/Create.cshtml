@@ -1,0 +1,91 @@
+@page
+@model HotelManagementSystem.Pages.Secured.Bookings.CreateModel
+@{
+    ViewData["Title"] = "Book A Room";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h6>Room Booking Form</h6>
+            </div>
+            <div class="col text-right">
+                <a class="btn btn-sm btn-primary px-3 text-capitalize" asp-area="" asp-page="/Secured/Rooms/Create">return to bookings</a>
+            </div>
+        </div>
+        <hr class="dropdown-divider" />
+
+        <div class="row col">
+            <div asp-validation-summary="All" class="text-danger text-sm"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Customer:</label>
+                    <strong>@Model.Input.Customer.FullName</strong>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Email Address:</label>
+                    <strong>@Model.Input.Customer.Email</strong>
+                </div>
+            </div>
+        </div>
+        <hr  class="dropdown-divider" />
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Input.Room"></label>
+                    <select class="form-control" asp-items="@Model.Rooms" asp-for="@Model.Input.Room"></select>
+                    <small class="text-danger" asp-validation-for="Input.Room"></small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Input.Nights"></label>
+                    <input class="form-control" asp-for="Input.Nights" />
+                    <small class="text-danger" asp-validation-for="Input.Nights"></small>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Input.CheckInTime"></label>
+                    <input class="form-control" asp-for="Input.CheckInTime" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+                    <small class="text-danger" asp-validation-for="Input.CheckInTime"></small>
+                </div>
+            </div>
+        </div>
+
+        <hr class="dropdown-divider" />
+        <div class="row">
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Input.ExpectedCheckOutTime"></label>
+                    <input class="form-control" asp-for="Input.ExpectedCheckOutTime" asp-format="{0:yyyy-MM-ddTHH:mm}" readonly />
+                    <small class="text-danger" asp-validation-for="Input.ExpectedCheckOutTime"></small>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="px-3 btn btn-sm btn-success mt-4 text-capitalize">Book Room</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr class="dropdown-divider" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

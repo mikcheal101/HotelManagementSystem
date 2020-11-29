@@ -20,9 +20,9 @@ namespace HotelManagementSystem.Pages.Secured.Customers
         private readonly ILogger<CreateModel> logger;
         private readonly ApplicationDbContext dbContext;
         private readonly string ReturnUrl;
-        private readonly IHostingEnvironment environment;
+        private readonly IWebHostEnvironment environment;
 
-        public CreateModel(ApplicationDbContext dbContext, ILogger<CreateModel> logger, IHostingEnvironment environment)
+        public CreateModel(ApplicationDbContext dbContext, ILogger<CreateModel> logger, IWebHostEnvironment environment)
         {
             this.environment = environment;
             this.dbContext = dbContext;
