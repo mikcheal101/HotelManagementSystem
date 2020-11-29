@@ -89,12 +89,16 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
 
                 if (ModelState.IsValid)
                 {
-                    var booking = new Booking();
+                    Room room = this.dbContext.Rooms.Find(this.Input.Room);
+                    room.RoomStatus = RoomStatues.OCCUPIED;
+                    this.dbContext.Rooms.Update(room);
+
+                    Booking booking = new Booking();
                     booking.Id = Guid.NewGuid().ToString();
                     booking.Attendant = await this.userManager.GetUserAsync(HttpContext.User);
                     booking.Customer = this.dbContext.Customers.Find(customer_id);
                     booking.CheckInTime = this.Input.CheckInTime;
-                    booking.Room = this.dbContext.Rooms.Find(this.Input.Room);
+                    booking.Room = room;
                     booking.ExpectedCheckOutTime = this.Input.ExpectedCheckOutTime.AddDays(this.Input.Nights - 1);
                     await this.dbContext.Bookings.AddAsync(booking);
                     await this.dbContext.SaveChangesAsync();
