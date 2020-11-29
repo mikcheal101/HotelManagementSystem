@@ -3,14 +3,16 @@ using System;
 using HotelManagementSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HotelManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201129224309_BookingStatus")]
+    partial class BookingStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,6 +42,9 @@ namespace HotelManagementSystem.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("RoomId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoomStatus")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -139,9 +144,9 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2c14027b-4ba4-4c66-bd82-e0114e65d3cf",
+                            Id = "b6d00956-a20b-4a67-8796-8f5b50ad900c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f3bc139b-6fcd-414f-9d45-20988ec6928c",
+                            ConcurrencyStamp = "459b9bbc-2a03-4136-963f-5495df34ff99",
                             Email = "admin@mail.com",
                             EmailConfirmed = true,
                             Firstname = "Hassan",
@@ -149,10 +154,10 @@ namespace HotelManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@MAIL.COM",
                             NormalizedUserName = "ADMIN@MAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAECj7Hivn8GxMEEhdTF3D9AFM8RBCkIornN04A2I+HxEIHZDVZgt6F3T5//d0eA+J7w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECIAOhjqwLPK2aC97RxYFqyBHZ8B+dcWlVubty174551vW1wR/0s7k6m1XQkdzjFHw==",
                             PhoneNumber = "07020464737",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "70a89844-9481-4195-9e98-1c3f3458db24",
+                            SecurityStamp = "a52e1006-857c-4ced-b2f1-c7f63932c40a",
                             TwoFactorEnabled = false,
                             UserName = "admin@mail.com"
                         });
@@ -172,9 +177,6 @@ namespace HotelManagementSystem.Migrations
 
                     b.Property<string>("RoomNumber")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("RoomStatus")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -322,8 +324,8 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2c14027b-4ba4-4c66-bd82-e0114e65d3cf",
-                            RoleId = "b7711aa2-ac9e-466b-92a0-7263c5958317"
+                            UserId = "b6d00956-a20b-4a67-8796-8f5b50ad900c",
+                            RoleId = "ecb23ae9-674d-46f7-bae7-9bffd0d2681a"
                         });
                 });
 
@@ -373,22 +375,22 @@ namespace HotelManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b7711aa2-ac9e-466b-92a0-7263c5958317",
-                            ConcurrencyStamp = "b7711aa2-ac9e-466b-92a0-7263c5958317",
+                            Id = "ecb23ae9-674d-46f7-bae7-9bffd0d2681a",
+                            ConcurrencyStamp = "ecb23ae9-674d-46f7-bae7-9bffd0d2681a",
                             Name = "system_administrator",
                             NormalizedName = "SYSTEM_ADMINISTRATOR"
                         },
                         new
                         {
-                            Id = "2d090995-0515-4ec3-827c-8ad46e8d1789",
-                            ConcurrencyStamp = "2d090995-0515-4ec3-827c-8ad46e8d1789",
+                            Id = "381f4114-f5ef-4079-afcc-1aa99012dd6e",
+                            ConcurrencyStamp = "381f4114-f5ef-4079-afcc-1aa99012dd6e",
                             Name = "employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "eac6cbbc-e57a-45bc-9865-3099ac0fd4ee",
-                            ConcurrencyStamp = "eac6cbbc-e57a-45bc-9865-3099ac0fd4ee",
+                            Id = "40b662c5-138d-4b1e-9fa0-f8a074391252",
+                            ConcurrencyStamp = "40b662c5-138d-4b1e-9fa0-f8a074391252",
                             Name = "customer",
                             NormalizedName = "CUSTOMER"
                         });

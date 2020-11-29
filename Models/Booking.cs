@@ -5,11 +5,6 @@ using HotelManagementSystem.Models;
 
 namespace HotelManagementSystem.Models
 {
-    public enum RoomStatues
-    {
-        EMPTY,
-        OCCUPIED
-    }
 
     public class Booking
     {
@@ -22,8 +17,6 @@ namespace HotelManagementSystem.Models
         public DateTime ExpectedCheckOutTime { get; set; }
         public Person Attendant { get; set; }
         public bool PaidPenalty { get; set; }
-
-        public string RoomStatus { get; set; }
 
         public float Penalty
         {

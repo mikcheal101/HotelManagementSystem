@@ -6,6 +6,12 @@ using System.Collections.Generic;
 
 namespace HotelManagementSystem.Models
 {
+    public enum RoomStatues
+    {
+        EMPTY,
+        OCCUPIED
+    }
+
     public class Room
     {
         [Key]
@@ -16,6 +22,7 @@ namespace HotelManagementSystem.Models
 
         [ForeignKey("RoomCategoryId")]
         public RoomCategory RoomCategory { get; set; }
+        public RoomStatues RoomStatus { get; set; }
 
         public string PreferedName
         {
