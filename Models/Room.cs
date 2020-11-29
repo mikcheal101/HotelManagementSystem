@@ -22,7 +22,7 @@ namespace HotelManagementSystem.Models
 
         [ForeignKey("RoomCategoryId")]
         public RoomCategory RoomCategory { get; set; }
-        public RoomStatues RoomStatus { get; set; }
+        public RoomStatues Status { get; set; }
 
         public string PreferedName
         {

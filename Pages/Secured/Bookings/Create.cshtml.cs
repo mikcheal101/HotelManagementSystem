@@ -90,7 +90,7 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
                 if (ModelState.IsValid)
                 {
                     Room room = this.dbContext.Rooms.Find(this.Input.Room);
-                    room.RoomStatus = RoomStatues.OCCUPIED;
+                    room.Status = RoomStatues.OCCUPIED;
                     this.dbContext.Rooms.Update(room);
 
                     Booking booking = new Booking();
