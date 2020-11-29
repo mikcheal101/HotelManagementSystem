@@ -20,9 +20,9 @@ namespace HotelManagementSystem.Pages.Secured.Customers
         private readonly ILogger<CreateModel> logger;
         private readonly ApplicationDbContext dbContext;
         private readonly string ReturnUrl;
-        private readonly IHostingEnvironment environment;
+        private readonly IWebHostEnvironment environment;
 
-        public UpdateModel(ApplicationDbContext dbContext, ILogger<CreateModel> logger, IHostingEnvironment environment)
+        public UpdateModel(ApplicationDbContext dbContext, ILogger<CreateModel> logger, IWebHostEnvironment environment)
         {
             this.environment = environment;
             this.dbContext = dbContext;
@@ -78,7 +78,7 @@ namespace HotelManagementSystem.Pages.Secured.Customers
         {
             var customer = await this.dbContext.Customers.FindAsync(Id);
 
-            if(customer != null)
+            if (customer != null)
             {
                 this.Input = new FormModel();
                 this.Input.Firstname = customer.Firstname;
@@ -97,7 +97,7 @@ namespace HotelManagementSystem.Pages.Secured.Customers
             {
                 var personType = this.dbContext.Usertypes.Where<Usertype>(usertype => usertype.Name == UserRole.CUSTOMER.ToString().ToLower()).First();
                 var customer = await this.dbContext.Customers.FindAsync(Id);
-                if(customer != null)
+                if (customer != null)
                 {
                     customer.Email = Input.Email.ToLower();
                     customer.NormalizedEmail = Input.Email.ToUpper();
@@ -109,7 +109,7 @@ namespace HotelManagementSystem.Pages.Secured.Customers
                     customer.IdentificationNumber = Input.IdentificationNumber;
                     customer.MeansOfIdentificationType = Input.MeansOfIdentificationType;
 
-                    if(Input.MeansOfIdentification != null)
+                    if (Input.MeansOfIdentification != null)
                     {
                         var filePath = Path.Combine(this.environment.ContentRootPath, "Uploads", Input.Email + Input.MeansOfIdentification.FileName);
                         using (var stream = System.IO.File.Create(filePath))

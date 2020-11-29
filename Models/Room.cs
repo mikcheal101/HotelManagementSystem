@@ -16,5 +16,13 @@ namespace HotelManagementSystem.Models
 
         [ForeignKey("RoomCategoryId")]
         public RoomCategory RoomCategory { get; set; }
+
+        public string PreferedName
+        {
+            get
+            {
+                return "Room : " + this.RoomNumber + " (Floor: " + this.FloorNumber + ").";
+            }
+        }
     }
 }

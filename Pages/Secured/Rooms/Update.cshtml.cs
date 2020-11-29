@@ -53,7 +53,7 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
         public async Task OnGetAsync(string Id)
         {
             var room = await this.dbContext.Rooms.FindAsync(Id);
-            if(room != null)
+            if (room != null)
             {
                 this.Input = new FormModel();
                 this.Input.FloorNumber = room.FloorNumber;
@@ -67,7 +67,7 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
             if (ModelState.IsValid)
             {
                 var room = await this.dbContext.Rooms.FindAsync(Id);
-                if(room != null)
+                if (room != null)
                 {
                     room.RoomCategoryId = this.Input.RoomCategory.ToString();
                     room.FloorNumber = Input.FloorNumber;
