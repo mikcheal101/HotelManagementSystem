@@ -5,6 +5,12 @@ using HotelManagementSystem.Models;
 
 namespace HotelManagementSystem.Models
 {
+    public enum RoomStatues
+    {
+        EMPTY,
+        OCCUPIED
+    }
+
     public class Booking
     {
         [Key]
@@ -17,6 +23,8 @@ namespace HotelManagementSystem.Models
         public Person Attendant { get; set; }
         public bool PaidPenalty { get; set; }
 
+        public string RoomStatus { get; set; }
+
         public float Penalty
         {
             get
@@ -25,5 +33,6 @@ namespace HotelManagementSystem.Models
                 return overlap.Days * this.Room.RoomCategory.CostPerNight;
             }
         }
+
     }
 }
