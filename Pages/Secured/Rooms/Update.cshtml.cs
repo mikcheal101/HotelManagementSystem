@@ -72,6 +72,7 @@ namespace HotelManagementSystem.Pages.Secured.Rooms
                     room.RoomCategoryId = this.Input.RoomCategory.ToString();
                     room.FloorNumber = Input.FloorNumber;
                     room.RoomNumber = Input.RoomNumber;
+                    room.Status = RoomStatues.EMPTY;
                     room.RoomCategory = await this.dbContext.RoomCategories.FindAsync(Input.RoomCategory.ToString());
 
                     this.dbContext.Rooms.Update(room);

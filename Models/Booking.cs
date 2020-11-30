@@ -27,5 +27,14 @@ namespace HotelManagementSystem.Models
             }
         }
 
+        public int Nights
+        {
+            get
+            {
+                var overlap = this.ExpectedCheckOutTime - this.CheckInTime;
+                return overlap.Days + 1;
+            }
+        }
+
     }
 }

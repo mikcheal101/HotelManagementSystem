@@ -99,7 +99,7 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
                     booking.Customer = this.dbContext.Customers.Find(customer_id);
                     booking.CheckInTime = this.Input.CheckInTime;
                     booking.Room = room;
-                    booking.ExpectedCheckOutTime = this.Input.ExpectedCheckOutTime.AddDays(this.Input.Nights - 1);
+                    booking.ExpectedCheckOutTime = this.Input.CheckInTime.AddDays(this.Input.Nights - 1);
                     await this.dbContext.Bookings.AddAsync(booking);
                     await this.dbContext.SaveChangesAsync();
 

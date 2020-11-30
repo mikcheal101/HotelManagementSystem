@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Cost Per Night (NGN)</th>
+                        <th>Cost Per Night</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -35,7 +35,7 @@
                     {
                     <tr>
                         <td>@category.Name</td>
-                        <td>@category.CostPerNight</td>
+                        <td>₦ @Convert.ToDecimal(category.CostPerNight).ToString("#,##0.00")</td>
                         <td class="text-right">
                             <div class="btn-group">
                                 <a class="text-capitalize btn btn-sm px-3 btn-danger" asp-area="" asp-page="/Secured/Rooms/Category/Delete" asp-route-id="@category.Id">delete</a>

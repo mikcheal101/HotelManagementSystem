@@ -5,14 +5,14 @@
 }
 
 
-<form method="post" enctype="multipart/form-data">
+<form method="post">
     <div class="container">
         <div class="row">
             <div class="col">
                 <h6>Room Booking Form</h6>
             </div>
             <div class="col text-right">
-                <a class="btn btn-sm btn-primary px-3 text-capitalize" asp-area="" asp-page="/Secured/Rooms/Create">return to bookings</a>
+                <a class="btn btn-sm btn-primary px-3 text-capitalize" asp-area="" asp-page="/Secured/Bookings/Index">return to bookings</a>
             </div>
         </div>
         <hr class="dropdown-divider" />
@@ -25,13 +25,13 @@
             <div class="col-4">
                 <div class="form-group">
                     <label>Customer:</label>
-                    <strong>@Model.Input.Customer.FullName</strong>
+                    <strong class="text-info">@Model.Input.Customer.FullName</strong>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
                     <label>Email Address:</label>
-                    <strong>@Model.Input.Customer.Email</strong>
+                    <strong class="text-info">@Model.Input.Customer.Email</strong>
                 </div>
             </div>
         </div>
