@@ -34,7 +34,7 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
         public FromControl Input { get; set; }
         public Booking Booking { get; set; }
 
-        public async Task OnGetAsync(string Id)
+        protected async Task LoadData(string Id)
         {
             this.Input = new FromControl();
             this.Input.CheckoutTime = DateTime.Now;
@@ -51,6 +51,25 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
             {
                 this.Input.Penalty = overlap * this.Booking.Room.RoomCategory.CostPerNight;
             }
+        }
+
+        public async Task OnGetAsync(string Id)
+        {
+            await this.LoadData(Id);
+        }
+
+        public async Task<IActionResult> OnPostAsync(string Id)
+        {
+            await this.LoadData(Id);
+            this.Booking.CheckOutTime = this.Input.CheckoutTime;
+            this.Booking.IsActive = false;
+
+            Room room = this.Booking.Room;
+            room.Status = RoomStatues.EMPTY;
+            this.dbContext.Rooms.Update(room);
+            this.dbContext.Bookings.Update(this.Booking);
+            await this.dbContext.SaveChangesAsync();
+            return Redirect(this.ReturnUrl);
         }
     }
 }

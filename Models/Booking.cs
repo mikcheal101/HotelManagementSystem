@@ -17,6 +17,7 @@ namespace HotelManagementSystem.Models
         public DateTime ExpectedCheckOutTime { get; set; }
         public Person Attendant { get; set; }
         public bool PaidPenalty { get; set; }
+        public bool IsActive { get; set; }
 
         public float Penalty
         {

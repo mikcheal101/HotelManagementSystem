@@ -32,6 +32,7 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
                 .Include(Booking => Booking.Attendant)
                 .Include(Booking => Booking.Customer)
                 .Include(Booking => Booking.Room)
+                .Where<Booking>(Booking => Booking.IsActive == true)
                 .ToList<Booking>();
         }
     }
