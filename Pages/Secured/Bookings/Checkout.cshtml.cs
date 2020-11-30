@@ -44,6 +44,7 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
             .Include(booking => booking.Customer)
             .Include(booking => booking.Room)
             .Include(booking => booking.Room.RoomCategory)
+            .Where<Booking>(Booking => Booking.Id == Id)
             .FirstOrDefaultAsync();
 
             int overlap = (DateTime.Now - this.Booking.ExpectedCheckOutTime).Days + 1;
@@ -61,13 +62,16 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
         public async Task<IActionResult> OnPostAsync(string Id)
         {
             await this.LoadData(Id);
-            this.Booking.CheckOutTime = this.Input.CheckoutTime;
-            this.Booking.IsActive = false;
-
             Room room = this.Booking.Room;
             room.Status = RoomStatues.EMPTY;
             this.dbContext.Rooms.Update(room);
+            await this.dbContext.SaveChangesAsync();
+
+            this.Booking.CheckOutTime = this.Input.CheckoutTime;
+            this.Booking.IsActive = false;
+            this.Booking.PaidPenalty = true;
             this.dbContext.Bookings.Update(this.Booking);
+
             await this.dbContext.SaveChangesAsync();
             return Redirect(this.ReturnUrl);
         }

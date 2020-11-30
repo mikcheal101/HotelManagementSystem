@@ -1,4 +1,5 @@
 ﻿@page
+@using HotelManagementSystem.Models;
 @model HotelManagementSystem.Pages.Secured.Customers.IndexModel
 @{
     ViewData["Title"] = "Customers";
@@ -39,11 +40,17 @@
                             <span>@Customer.FullName</span>
                         </td>
                         <td class="text-right">
-                            <div class="btn-group">
-                                <a asp-area="" asp-page="/Secured/Customers/Delete" asp-route-id="@Customer.Id" class="text-white btn px-4 btn-sm btn-danger text-capitalize">delete</a>
-                                <a asp-area="" asp-page="/Secured/Customers/Update" asp-route-id="@Customer.Id" class="text-white btn px-4 btn-sm btn-info text-capitalize">edit</a>
-                            </div>
-                            <a asp-area="" asp-page="/Secured/Bookings/Create" asp-route-customer_id="@Customer.Id" class="text-capitalize btn btn-sm px-3 btn-primary">book room</a>
+                            @if(User.IsInRole(UserRole.SYSTEM_ADMINISTRATOR.ToString().ToLower()))
+                            {
+                                <div class="btn-group">
+                                    <a asp-area="" asp-page="/Secured/Customers/Delete" asp-route-id="@Customer.Id" class="text-white btn px-4 btn-sm btn-danger text-capitalize">delete</a>
+                                    <a asp-area="" asp-page="/Secured/Customers/Update" asp-route-id="@Customer.Id" class="text-white btn px-4 btn-sm btn-info text-capitalize">edit</a>
+                                </div>
+                            }
+                            @if(User.IsInRole(UserRole.EMPLOYEE.ToString().ToLower()))
+                            {
+                                <a asp-area="" asp-page="/Secured/Bookings/Create" asp-route-customer_id="@Customer.Id" class="text-capitalize btn btn-sm px-3 btn-primary">book room</a>
+                            }
                         </td>
                     </tr>
                     }

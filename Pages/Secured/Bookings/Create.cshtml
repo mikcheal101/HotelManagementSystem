@@ -57,21 +57,11 @@
                     <label asp-for="Input.CheckInTime"></label>
                     <input class="form-control" asp-for="Input.CheckInTime" asp-format="{0:yyyy-MM-ddTHH:mm}" />
                     <small class="text-danger" asp-validation-for="Input.CheckInTime"></small>
+                    <input class="form-control" asp-for="Input.ExpectedCheckOutTime" asp-format="{0:yyyy-MM-ddTHH:mm}" type="hidden" />
                 </div>
             </div>
         </div>
 
-        <hr class="dropdown-divider" />
-        <div class="row">
-
-            <div class="col-4">
-                <div class="form-group">
-                    <label asp-for="Input.ExpectedCheckOutTime"></label>
-                    <input class="form-control" asp-for="Input.ExpectedCheckOutTime" asp-format="{0:yyyy-MM-ddTHH:mm}" readonly />
-                    <small class="text-danger" asp-validation-for="Input.ExpectedCheckOutTime"></small>
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col">

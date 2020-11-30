@@ -1,4 +1,5 @@
 ﻿@page
+@using HotelManagementSystem.Models;
 @model HotelManagementSystem.Pages.Secured.Rooms.IndexModel
 @{
     ViewData["Title"] = "Rooms";
@@ -12,9 +13,12 @@
         <div class="col-8">
             <h6 class="mb-0">Rooms Listing</h6>
         </div>
+        @if(User.IsInRole(UserRole.SYSTEM_ADMINISTRATOR.ToString().ToLower()))
+        {
         <div class="col text-right">
             <a class="btn btn-sm btn-primary px-3" asp-area="" asp-page="/Secured/Rooms/Create">add room</a>
         </div>
+        }
     </div>
     <div class="row">
         <div class="col">
@@ -44,10 +48,13 @@
                         <td class="text-right">
                             @if(Room.Status == Models.RoomStatues.EMPTY)
                             {
+                                @if(User.IsInRole(UserRole.SYSTEM_ADMINISTRATOR.ToString().ToLower()))
+                                {
                                 <div class="btn-group">
                                     <a class="text-capitalize btn btn-sm px-3 btn-danger" asp-area="" asp-page="/Secured/Rooms/Delete" asp-route-id="@Room.Id">delete</a>
                                     <a class="text-capitalize btn btn-sm px-3 btn-info" asp-area="" asp-page="/Secured/Rooms/Update" asp-route-id="@Room.Id">edit</a>
                                 </div>
+                                }
                             }
                         </td>
                     </tr>

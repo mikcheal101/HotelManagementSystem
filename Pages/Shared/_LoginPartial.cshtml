@@ -35,8 +35,21 @@
             </li>
         }
 
-        @if(!User.IsInRole(UserRole.EMPLOYEE.ToString().ToLower()))
+        @if(User.IsInRole(UserRole.EMPLOYEE.ToString().ToLower()))
         {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Accomodation
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Secured/Rooms/Index">Rooms</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Secured/Rooms/Category/Index">Room Categories</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/Secured/CUstomers/Index">Customers</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-page="/Secured/Bookings/Index">Bookings</a>
             </li>
