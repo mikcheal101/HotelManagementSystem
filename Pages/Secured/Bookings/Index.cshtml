@@ -1,0 +1,59 @@
+﻿@page
+@model Pages.Secured.Bookings.IndexPage
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <span class="h6">Bookings</span>
+        </div>
+    </div>
+    <hr class="dropdown-divider" />
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>Room</th>
+                        <th>Customer</th>
+                        <th>Booking Time</th>
+                        <th>Expected Checkout Time</th>
+                        <th>Current Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Booking in Model.Bookings)
+                    {
+                        <tr>
+                            <td>
+                                <span>@Booking.Room.PreferedName</span>
+                            </td>
+                            <td>
+                                <span>@Booking.Customer.FullName</span>
+                            </td>
+                            <td>
+                                <span>@Booking.CheckInTime</span>
+                            </td>
+                            <td>
+                                <span>@Booking.ExpectedCheckOutTime</span>
+                            </td>
+                            <td>
+                                <span>@Booking.Room.Status</span>
+                            </td>
+                            <td class="text-right">
+                                <div class="btn-group">
+                                    <a asp-area="" asp-page="/Secured/Bookings/Delete" asp-route-id="@Booking.Id" class="text-white btn px-4 btn-sm btn-danger text-capitalize">delete</a>
+                                    <a asp-area="" asp-page="/Secured/Bookings/Update" asp-route-id="@Booking.Id" class="text-white btn px-4 btn-sm btn-info text-capitalize">edit</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
