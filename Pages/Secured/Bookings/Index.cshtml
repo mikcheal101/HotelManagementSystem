@@ -45,8 +45,11 @@
                             </td>
                             <td class="text-right">
                                 <div class="btn-group">
-                                    <a asp-area="" asp-page="/Secured/Bookings/Delete" asp-route-id="@Booking.Id" class="text-white btn px-4 btn-sm btn-danger text-capitalize">delete</a>
-                                    <a asp-area="" asp-page="/Secured/Bookings/Update" asp-route-id="@Booking.Id" class="text-white btn px-4 btn-sm btn-info text-capitalize">edit</a>
+                                    @if(Booking.Room.Status == Models.RoomStatues.OCCUPIED)
+                                    {
+                                        <a asp-area="" asp-page="/Secured/Bookings/Checkout" asp-route-id="@Booking.Id" class="text-white btn px-4 btn-sm btn-info text-capitalize">checkout</a>
+                                    }
+                                    @* <a asp-area="" asp-page="/Secured/Bookings/Update" asp-route-id="@Booking.Id" class="text-white btn px-4 btn-sm btn-info text-capitalize">edit</a> *@
                                 </div>
                             </td>
                         </tr>

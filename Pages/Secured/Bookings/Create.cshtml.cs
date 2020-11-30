@@ -72,7 +72,7 @@ namespace HotelManagementSystem.Pages.Secured.Bookings
             this.Input = new FormModel();
             this.Input.CheckInTime = DateTime.Now;
             this.Input.Nights = 1;
-            this.Rooms = new SelectList(this.dbContext.Rooms.ToList<Room>(), "Id", "PreferedName");
+            this.Rooms = new SelectList(this.dbContext.Rooms.Where<Room>(room => room.Status == RoomStatues.EMPTY).ToList<Room>(), "Id", "PreferedName");
             this.CalculateCheckoutTime();
 
             if (customer_id != null)
